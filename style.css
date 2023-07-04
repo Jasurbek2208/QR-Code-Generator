@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.content {
+  padding: 50px 15px 10px;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.content-header,
+.content-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.content-body__image {
+  position: relative;
+  margin-bottom: 10px;
+
+  width: 220px;
+  height: 220px;
+
+  border: 1px solid blueviolet;
+  background-color: rgba(137, 43, 226, 0.041);
+  transition: 300ms;
+}
+
+.content-body__image::before {
+  display: grid;
+  place-items: center;
+  content: "No text entered!";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(247, 233, 255);
+}
+
+.content-body__image:hover {
+  box-shadow: 0 0 16px 0 rgba(137, 43, 226, 0.233);
+}
+
+.content-header__title {
+  text-align: center;
+  line-height: 42px;
+  color: blueviolet;
+}
+
+.content-header__description {
+  margin-top: 8px;
+
+  color: blueviolet;
+  font-size: smaller;
+  line-height: 23px;
+
+  opacity: 0.7;
+}
+
+.content-body__input,
+.content-body__button {
+  padding: 14px 12px;
+  width: 100%;
+
+  outline: none;
+  font-size: small;
+  transition: 100ms;
+  border: 0.8px solid blueviolet;
+}
+
+.content-body__input::placeholder {
+  opacity: 0.6;
+}
+
+.content-body__button {
+  cursor: pointer;
+  color: #fff;
+  font-weight: 700;
+  background-color: blueviolet;
+}
+
+.content-body__input:not(.no-hover):focus,
+.content-body__input:not(.no-hover):hover,
+.content-body__button:not(.no-hover):focus,
+.content-body__button:not(.no-hover):hover {
+  outline: 1.2px solid blueviolet;
+}
+
+.content-body__actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.content-body__actions__button {
+  cursor: no-drop;
+  width: 100%;
+
+  font-size: smaller;
+  border: 0.8px solid rgba(137, 43, 226, 0.411);
+  background-color: rgba(137, 43, 226, 0.411);
+}
+
+.content-body__actions__button.active {
+  cursor: pointer;
+  border: 0.8px solid blueviolet;
+  background-color: blueviolet;
+}
