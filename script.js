@@ -26,6 +26,11 @@ button.addEventListener("click", async () => {
     const response = await fetch(API_URL + input.value, { method: 'GET' });
     image.src = response.url;
     QR_CODE_LINK = response.url;
+    
+    CAMERA_IS_OPEN = false;
+    cameraBtn.innerText = "Using the device's camera";
+    
+    cameraBtnToggler(CAMERA_IS_OPEN);
     activateBtn(true);
 
   } catch (error) {
@@ -80,6 +85,7 @@ cameraBtn.addEventListener('click', () => {
   }
 
   QR_CODE_LINK = "";
+  input.value = "";
   cameraBtn.innerText = "Disable the device camera";
   cameraBtnToggler(CAMERA_IS_OPEN);
   startCamera();
