@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Scanner</title>
+  <script async src="https://docs.opencv.org/master/opencv.js" onload="startCamera()"></script>
+</head>
+<body>
+  <video id="videoElement" autoplay></video>
+  
+  <script>
+    function startCamera() {
+      const videoElement = document.getElementById('videoElement');
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          videoElement.srcObject = stream;
+          videoElement.addEventListener('loadedmetadata', () => {
+            const videoWidth = videoElement.videoWidth;
+            const videoHeight = videoElement.videoHeight;
+            const canvasElement = document.createElement('canvas');
+            canvasElement.width = videoWidth;
+            canvasElement.height = videoHeight;
+            const canvasContext = canvasElement.getContext('2d');
+
+            setInterval(() => {
+              canvasContext.drawImage(videoElement, 0, 0, videoWidth, videoHeight);
+              const imageData = canvasContext.getImageData(0, 0, videoWidth, videoHeight);
+              const src = cv.matFromImageData(imageData);
+              const gray = new cv.Mat();
+              cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
+              const qrCode = new cv.QRCodeDetector();
+              const decodedText = qrCode.detectAndDecode(gray);
+              if(decodedText) {
+                alert(decodedText);
+              }
+              src.delete();
+              gray.delete();
+            }, 100);
+          });
+        })
+        .catch((error) => {
+          console.error('Error accessing camera:', error);
+        });
+    }
+  </script>
+</body>
+</html>

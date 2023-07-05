@@ -14,7 +14,7 @@
 
   display: flex;
   flex-direction: column;
-  row-gap: 40px;
+  row-gap: 30px;
 }
 
 .content-header,
@@ -26,6 +26,11 @@
 }
 
 .content-body__image {
+  display: none;
+}
+
+.content-body__image.active {
+  display: block;
   position: relative;
   margin-bottom: 10px;
 
@@ -37,7 +42,7 @@
   transition: 300ms;
 }
 
-.content-body__image::before {
+.content-body__image.active::before {
   display: grid;
   place-items: center;
   content: "No text entered!";
@@ -46,7 +51,7 @@
   background-color: rgb(247, 233, 255);
 }
 
-.content-body__image:hover {
+.content-body__image.active:hover {
   box-shadow: 0 0 16px 0 rgba(137, 43, 226, 0.233);
 }
 
@@ -116,4 +121,57 @@
   cursor: pointer;
   border: 0.8px solid blueviolet;
   background-color: blueviolet;
+}
+
+/* Camera button style */
+.content-body__button.btn-camera {
+  padding: 10px 8px;
+  width: 220px;
+}
+
+video.content-body__image.active {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* For Modal */
+.modal {
+  margin: 80px auto;
+  padding: 50px 16px;
+
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  max-width: 400px;
+  
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.315);
+  z-index: 2;
+}
+
+.modal > header > h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.modal-backfon {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.51);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1;
+}
+.modal > .modal__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }

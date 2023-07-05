@@ -27,8 +27,9 @@
       </div>
 
       <div class="content-body">
-        
-        <img src="" class="content-body__image" alt="qr-code" />
+        <button type="button" id="btn-camera" class="content-body__button btn-camera">Using the device's camera</button>
+        <img src="" class="content-body__image active" alt="qr-code" />
+        <video id="videoElement" width="220" height="220" autoplay class="content-body__image"></video>
         <input type="text" id="text-input" class="content-body__input" placeholder="Write me link or any text" />
         <button type="button" id="btn" class="content-body__button">
           Generate
@@ -46,6 +47,9 @@
       </div>
     </main>
 
+    <div class="root"></div>
+    
+    <script async src="https://docs.opencv.org/master/opencv.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
