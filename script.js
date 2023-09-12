@@ -26,10 +26,10 @@ button.addEventListener("click", async () => {
     const response = await fetch(API_URL + input.value, { method: 'GET' });
     image.src = response.url;
     QR_CODE_LINK = response.url;
-    
+
     CAMERA_IS_OPEN = false;
     cameraBtn.innerText = "Using the device's camera";
-    
+
     cameraBtnToggler(CAMERA_IS_OPEN);
     activateBtn(true);
 
@@ -49,6 +49,8 @@ downloadBtn.addEventListener('click', async () => {
   downloadLink.href = URL.createObjectURL(blob);
   downloadLink.download = "QR-Code.png";
   downloadLink.click();
+
+  alert('QR-Code downloaded!');
 });
 
 // Action buttons toggles
@@ -105,20 +107,37 @@ function cameraBtnToggler(camera_is_open) {
 
 function copyText() {
   navigator.clipboard.writeText(QR_CODE_LINK);
+  alert('QR-Code link copied!');
 }
 
 function startCamera() {
   const videoElement = document.getElementById('videoElement');
 
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then((stream) => {
+  navigator.mediaDevices.getUserMedia({
+    video: {
+      facingMode: {
+        exact: 'environment'
+      }
+    }
+  }).then((stream) => {
+    videoElement.srcObject = stream;
+
+    videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+  }).catch(() => {
+    navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: {
+          exact: 'user'
+        }
+      }
+    }).then((stream) => {
       videoElement.srcObject = stream;
 
       videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
-    })
-    .catch((error) => {
-      console.error('Error accessing camera:', error);
+    }).catch((error) => {
+      console.error('Error accessing camera: ', error);
     });
+  });
 }
 
 function handleLoadedMetadata() {

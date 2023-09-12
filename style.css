@@ -37,7 +37,7 @@
   width: 220px;
   height: 220px;
 
-  border: 1px solid blueviolet;
+  border: 1px solid rgb(22 17 25/1);
   background-color: rgba(137, 43, 226, 0.041);
   transition: 300ms;
 }
@@ -48,7 +48,7 @@
   content: "No text entered!";
   position: absolute;
   inset: 0;
-  background-color: rgb(247, 233, 255);
+  background-color: rgb(185, 185, 185);
 }
 
 .content-body__image.active:hover {
@@ -58,13 +58,13 @@
 .content-header__title {
   text-align: center;
   line-height: 42px;
-  color: blueviolet;
+  color: rgb(22 17 25/1);
 }
 
 .content-header__description {
   margin-top: 8px;
 
-  color: blueviolet;
+  color: rgb(22 17 25/1);
   font-size: smaller;
   line-height: 23px;
 
@@ -79,7 +79,7 @@
   outline: none;
   font-size: small;
   transition: 100ms;
-  border: 0.8px solid blueviolet;
+  border: 0.8px solid rgb(22 17 25/1);
 }
 
 .content-body__input::placeholder {
@@ -90,14 +90,14 @@
   cursor: pointer;
   color: #fff;
   font-weight: 700;
-  background-color: blueviolet;
+  background-color: rgb(22 17 25/1);
 }
 
 .content-body__input:not(.no-hover):focus,
 .content-body__input:not(.no-hover):hover,
 .content-body__button:not(.no-hover):focus,
 .content-body__button:not(.no-hover):hover {
-  outline: 1.2px solid blueviolet;
+  outline: 1.2px solid rgb(22 17 25/1);
 }
 
 .content-body__actions {
@@ -113,14 +113,14 @@
   width: 100%;
 
   font-size: smaller;
-  border: 0.8px solid rgba(137, 43, 226, 0.411);
-  background-color: rgba(137, 43, 226, 0.411);
+  border: 0.8px solid rgb(22 17 25/0.41);
+  background-color: rgb(22 17 25/0.41);
 }
 
 .content-body__actions__button.active {
   cursor: pointer;
-  border: 0.8px solid blueviolet;
-  background-color: blueviolet;
+  border: 0.8px solid rgb(22 17 25/1);
+  background-color: rgb(22 17 25/1);
 }
 
 /* Camera button style */
